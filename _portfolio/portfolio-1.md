@@ -41,3 +41,21 @@ Install using the command in the /mnt directory.
 There you need to enter the file path and confirm.
 
 # Running speccpu2017
+## Modify The Configuration File
+
+In the `speccpu2017/config` directory, there are configuration files that come with `speccpu2017`. We can copy them and modify the corresponding code for use. Here, for the RISCV architecture, I copy the `Example-gcc-linux-aarch64.cfg` file and rename the copied file to `riscv.cfg`.
+
+```c++
+CC                  = riscv-linux-gnu-gcc -std=c99 %{model}
+CXX                 = riscv-linux-gnu-g++ -std=c++03 %{model}
+FC                  = riscv-linux-gnu-gfortran %{model}
+```
+
+## Compile to Generate The SPEC Executable File
+
+To compile the benchmark within speccpu2017, enter the following command in the terminal.
+
+```c++
+source shrc
+runcpu --config=riscv --action=setup --size=ref all # Activate the spec environment
+```
