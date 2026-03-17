@@ -59,3 +59,25 @@ To compile the benchmark within speccpu2017, enter the following command in the 
 source shrc
 runcpu --config=riscv --action=setup --size=ref all # Activate the spec environment
 ```
+
+The following error occurred during compilation:
+
+```c++
+  Building 503.bwaves_r base mytest: (build_base_mytest.0000) [2026-03-16 23:14:04]
+Error with make 'specmake --output-sync --jobs=2 build':
+  ----------------------------------------------------------------------------
+  Please review this file:
+    "/home/xiao/Documents/kvm/speccpu2017/benchspec/CPU/503.bwaves_r/build/build_base_mytest.0000/make.out"
+  ----------------------------------------------------------------------------
+  Command returned exit code 2
+  Error with make!
+```
+
+GCC 9 (gfortran-9) does not support the `-fallow-argument-mismatch` option.
+This option, introduced in GCC 10, handles common argument mismatches (act/dummy parameter type/rank mismatches) in older Fortran code, turning them into warnings instead of errors.
+GCC 9 and earlier versions treat these mismatches as errors by default. SPEC CPU 2017's 507.cactuBSSN_r (Fortran code based on the Cactus/Einstein Toolkit) contains many of these older, less strict Fortran interfaces.
+Therefore, this flag is required in GCC 10+ for compilation to succeed.
+
+Therefore, we chose to compile after removing the -fallow-argument-mismatch directive.
+
+After compilation, you can see the compiled benchmark.
