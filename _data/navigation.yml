@@ -17,8 +17,8 @@ main:
   - title: "Teaching"
     url: /teaching/    
     
-  # - title: "Portfolio"
-  #   url: /portfolio/
+  - title: "Portfolio"
+    url: /portfolio/
         
   - title: "Blog Posts"
     url: /year-archive/
@@ -26,8 +26,8 @@ main:
   - title: "CV"
     url: /cv/
     
-  - title: "Knowledge"
-    url: /knowledge/
+  # - title: "Knowledge"
+  #   url: /knowledge/
     
   - title: "Guide"
     url: /markdown/
