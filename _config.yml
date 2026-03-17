@@ -233,10 +233,6 @@ collections:
   talks:
     output: true
     permalink: /:collection/:path/
-  knowledge:
-    output: true
-    permalink: /:collection/:path/
-
 
 # These settings control how pages and collections are included in the site
 defaults:
